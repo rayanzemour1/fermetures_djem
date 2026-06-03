@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
+import Logo from './Logo'
 
 const navLinks = [
   { label: 'Accueil',      href: '#accueil' },
@@ -31,9 +32,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#accueil" onClick={() => handleNav('#accueil')}>
-            <div className="bg-white rounded-lg px-3 py-1.5">
-              <img src="/logo.png" alt="Fermetures Djem" className="h-10 w-auto" />
-            </div>
+            <Logo variant="dark" />
           </a>
 
           {/* Desktop nav */}

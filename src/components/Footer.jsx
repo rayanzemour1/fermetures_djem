@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
+import Logo from './Logo'
 
 const links = {
   Services: [
@@ -30,8 +31,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Brand */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg px-4 py-2 inline-flex mb-4">
-                <img src="/logo.png" alt="Fermetures Djem" className="h-10 w-auto" />
+              <div className="mb-4">
+                <Logo variant="dark" />
               </div>
               <p className="text-sm text-slate-400 leading-relaxed mb-6">
                 Votre partenaire de confiance pour tous vos projets de fermeture,
