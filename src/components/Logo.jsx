@@ -1,18 +1,21 @@
+const barlow = "'Barlow Condensed', 'Arial Narrow', sans-serif"
+
 export default function Logo({ variant = 'dark' }) {
-  // variant: 'dark' = on dark bg (header/footer), 'light' = on white bg
-  const isLight = variant === 'light'
+  const isDark = variant === 'dark'
   return (
     <div className="flex items-center gap-3">
-      <img src="/logo-icon.svg" alt="" className="h-10 w-auto" />
-      <div className="leading-none">
-        <div className={`text-[11px] font-semibold tracking-[0.28em] uppercase mb-0.5 ${
-          isLight ? 'text-dark-800' : 'text-slate-200'
-        }`}>
+      <img src="/logo-icon.svg" alt="" className="h-11 w-auto" />
+      <div className="leading-none select-none">
+        <div
+          style={{ fontFamily: barlow, letterSpacing: '0.25em' }}
+          className={`text-sm font-semibold uppercase mb-0.5 ${isDark ? 'text-slate-200' : 'text-[#000957]'}`}
+        >
           Fermetures
         </div>
-        <div className={`text-[26px] font-black tracking-widest uppercase leading-none ${
-          isLight ? 'text-dark-800' : 'text-gold-400'
-        }`}>
+        <div
+          style={{ fontFamily: barlow, letterSpacing: '0.08em' }}
+          className={`text-3xl font-black uppercase leading-none ${isDark ? 'text-[#FFB200]' : 'text-[#000957]'}`}
+        >
           Djem
         </div>
       </div>
