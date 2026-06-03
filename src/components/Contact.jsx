@@ -1,31 +1,16 @@
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Loader2 } from 'lucide-react'
+
+const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 const infos = [
-  {
-    icon: Phone,
-    label: 'Téléphone',
-    value: '01 23 45 67 89',
-    href: 'tel:+33123456789',
-  },
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'contact@fermetures-djem.fr',
-    href: 'mailto:contact@fermetures-djem.fr',
-  },
-  {
-    icon: MapPin,
-    label: 'Zone d\'intervention',
-    value: 'Île-de-France & grande couronne',
-    href: null,
-  },
-  {
-    icon: Clock,
-    label: 'Horaires',
-    value: 'Lun–Sam : 8h–19h · Urgences 7j/7',
-    href: null,
-  },
+  { icon: Phone,  label: 'Téléphone',          value: '01 23 45 67 89',               href: 'tel:+33123456789' },
+  { icon: Mail,   label: 'Email',               value: 'contact@fermetures-djem.fr',    href: 'mailto:contact@fermetures-djem.fr' },
+  { icon: MapPin, label: "Zone d'intervention", value: 'Île-de-France & grande couronne', href: null },
+  { icon: Clock,  label: 'Horaires',            value: 'Lun–Sam : 8h–19h · Urgences 7j/7', href: null },
 ]
 
 const services = [
@@ -39,12 +24,14 @@ const services = [
   'Dépannage / SAV',
 ]
 
+const emptyForm = { name: '', phone: '', email: '', service: '', message: '' }
+
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: '', phone: '', email: '', service: '', message: '',
-  })
-  const [sent, setSent] = useState(false)
-  const [errors, setErrors] = useState({})
+  const [form, setForm]       = useState(emptyForm)
+  const [sent, setSent]       = useState(false)
+  const [sending, setSending] = useState(false)
+  const [errors, setErrors]   = useState({})
+  const [sendError, setSendError] = useState('')
 
   const validate = () => {
     const e = {}
@@ -56,12 +43,33 @@ export default function Contact() {
     return e
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
-    setSent(true)
+    setSendError('')
+    setSending(true)
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name:    form.name,
+          from_email:   form.email,
+          phone:        form.phone,
+          service_type: form.service,
+          message:      form.message,
+        },
+        PUBLIC_KEY
+      )
+      setSent(true)
+    } catch {
+      setSendError("Une erreur est survenue. Veuillez réessayer ou nous appeler directement.")
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleChange = (field) => (e) => {
@@ -83,7 +91,7 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Left – info */}
+          {/* Infos */}
           <div className="lg:col-span-2 space-y-6">
             {infos.map(({ icon: Icon, label, value, href }) => (
               <div key={label} className="flex items-start gap-4">
@@ -103,7 +111,6 @@ export default function Contact() {
               </div>
             ))}
 
-            {/* Map placeholder */}
             <div className="mt-6 rounded-2xl overflow-hidden bg-slate-100 h-52 flex items-center justify-center border border-slate-200">
               <div className="text-center text-slate-400">
                 <MapPin size={32} className="mx-auto mb-2 text-gold-400" />
@@ -113,17 +120,17 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right – form */}
+          {/* Formulaire */}
           <div className="lg:col-span-3">
             {sent ? (
-              <div className="flex flex-col items-center justify-center h-full py-16 text-center">
+              <div className="flex flex-col items-center justify-center py-16 text-center">
                 <CheckCircle size={56} className="text-emerald-500 mb-4" />
-                <h3 className="text-2xl font-bold text-dark-800 mb-2">Message envoyé !</h3>
+                <h3 className="text-2xl font-bold text-dark-800 mb-2">Demande envoyée !</h3>
                 <p className="text-slate-500">
                   Merci pour votre demande. Nous vous recontactons dans les 24 heures.
                 </p>
                 <button
-                  onClick={() => { setSent(false); setForm({ name: '', phone: '', email: '', service: '', message: '' }) }}
+                  onClick={() => { setSent(false); setForm(emptyForm) }}
                   className="mt-6 text-gold-500 hover:underline text-sm font-medium"
                 >
                   Envoyer une autre demande
@@ -185,9 +192,22 @@ export default function Contact() {
                   />
                 </Field>
 
-                <button type="submit" className="btn-primary w-full justify-center py-4">
-                  <Send size={18} />
-                  Envoyer ma demande
+                {sendError && (
+                  <p className="text-red-500 text-sm bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+                    {sendError}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="btn-primary w-full justify-center py-4 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {sending ? (
+                    <><Loader2 size={18} className="animate-spin" /> Envoi en cours…</>
+                  ) : (
+                    <><Send size={18} /> Envoyer ma demande</>
+                  )}
                 </button>
 
                 <p className="text-xs text-slate-400 text-center">
