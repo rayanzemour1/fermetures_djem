@@ -1,57 +1,58 @@
 import { useEffect, useRef, useState } from 'react'
+import { Blinds, Store, AppWindow, DoorOpen, Fence, Tent, Zap, Wrench } from 'lucide-react'
 
 const services = [
   {
-    icon: '🪟',
+    icon: Blinds,
     title: 'Volets Roulants',
     desc: 'Installation, réparation et motorisation de volets roulants aluminium, PVC ou bois. Manuels ou électriques, adaptés à toutes les fenêtres.',
     tags: ['Aluminium', 'PVC', 'Motorisé', 'Sur mesure'],
     color: 'from-blue-500 to-blue-700',
   },
   {
-    icon: '🏗️',
+    icon: Store,
     title: 'Rideaux Métalliques',
     desc: 'Rideaux métalliques pour commerces, entrepôts et garages. Modèles battants, coulissants ou enroulables, ignifugés sur demande.',
     tags: ['Commerce', 'Entrepôt', 'Anti-effraction', 'Ignifugé'],
     color: 'from-slate-500 to-slate-700',
   },
   {
-    icon: '🪟',
+    icon: AppWindow,
     title: 'Fenêtres & Baies',
     desc: 'Menuiseries PVC, aluminium ou bois double/triple vitrage. Amélioration thermique et acoustique pour un confort optimal.',
     tags: ['Double vitrage', 'Triple vitrage', 'Isolation', 'PVC / Alu'],
     color: 'from-sky-500 to-sky-700',
   },
   {
-    icon: '🚪',
+    icon: DoorOpen,
     title: 'Portails & Portes',
     desc: 'Portails battants ou coulissants, portes de garage sectionnelles ou basculantes. Automation complète avec télécommande ou smartphone.',
     tags: ['Battant', 'Coulissant', 'Sectionnelle', 'Automatique'],
     color: 'from-amber-500 to-amber-700',
   },
   {
-    icon: '🛡️',
+    icon: Fence,
     title: 'Garde-Corps',
     desc: 'Garde-corps en aluminium, acier inoxydable ou verre pour balcons, terrasses et escaliers. Design contemporain et sécurité maximale.',
     tags: ['Inox', 'Verre', 'Balcon', 'Terrasse'],
     color: 'from-emerald-500 to-emerald-700',
   },
   {
-    icon: '🏡',
+    icon: Tent,
     title: 'Vérandas & Pergolas',
     desc: 'Vérandas aluminium clés en main, pergolas bioclimatiques à lames orientables. Extension lumineuse de votre espace de vie.',
     tags: ['Bioclimatique', 'Aluminium', 'Lames orientables', 'Sur mesure'],
     color: 'from-rose-500 to-rose-700',
   },
   {
-    icon: '⚙️',
+    icon: Zap,
     title: 'Motorisations',
     desc: 'Automatisation de tous vos équipements : volets, portails, rideaux. Intégration domotique, télécommande et application mobile.',
     tags: ['Domotique', 'Télécommande', 'App mobile', 'Tous supports'],
     color: 'from-violet-500 to-violet-700',
   },
   {
-    icon: '🔧',
+    icon: Wrench,
     title: 'Dépannage & SAV',
     desc: 'Intervention rapide 7j/7 pour tous vos dépannages. Remplacement de lames, moteurs, ressorts et systèmes de verrouillage.',
     tags: ['7j/7', 'Urgence', 'Toutes marques', 'Garantie'],
@@ -72,6 +73,8 @@ function ServiceCard({ service, index }) {
     return () => obs.disconnect()
   }, [])
 
+  const Icon = service.icon
+
   return (
     <div
       ref={ref}
@@ -82,7 +85,9 @@ function ServiceCard({ service, index }) {
       <div className={`h-1.5 bg-gradient-to-r ${service.color}`} />
 
       <div className="p-6">
-        <div className="text-4xl mb-4">{service.icon}</div>
+        <div className="w-12 h-12 bg-gold-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <Icon size={26} className="text-gold-500" />
+        </div>
         <h3 className="text-xl font-bold text-dark-800 mb-3 group-hover:text-gold-600 transition-colors">
           {service.title}
         </h3>
