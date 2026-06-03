@@ -30,16 +30,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Brand */}
             <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gold-500 rounded-lg flex flex-col justify-center items-center gap-1 p-2">
-                  {[1, 0.7, 0.4].map((op, i) => (
-                    <div key={i} className="w-full h-1 bg-white rounded-full" style={{ opacity: op }} />
-                  ))}
-                </div>
-                <div>
-                  <span className="text-white font-bold text-lg leading-tight block">Fermetures</span>
-                  <span className="text-gold-400 font-bold text-lg leading-tight block">Djem</span>
-                </div>
+              <div className="bg-white rounded-lg px-4 py-2 inline-flex mb-4">
+                <img src="/logo.png" alt="Fermetures Djem" className="h-10 w-auto" />
               </div>
               <p className="text-sm text-slate-400 leading-relaxed mb-6">
                 Votre partenaire de confiance pour tous vos projets de fermeture,

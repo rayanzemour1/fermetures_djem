@@ -30,15 +30,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#accueil" onClick={() => handleNav('#accueil')} className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gold-500 rounded-lg flex flex-col justify-center items-center gap-1 p-2">
-              {[1, 0.7, 0.4].map((op, i) => (
-                <div key={i} className="w-full h-1 bg-white rounded-full" style={{ opacity: op }} />
-              ))}
-            </div>
-            <div>
-              <span className="text-white font-bold text-xl leading-tight block">Fermetures</span>
-              <span className="text-gold-400 font-bold text-xl leading-tight block">Djem</span>
+          <a href="#accueil" onClick={() => handleNav('#accueil')}>
+            <div className="bg-white rounded-lg px-3 py-1.5">
+              <img src="/logo.png" alt="Fermetures Djem" className="h-10 w-auto" />
             </div>
           </a>
 
