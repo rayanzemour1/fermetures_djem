@@ -129,12 +129,17 @@ export default function Contact() {
                 </div>
               </div>
             ))}
-            <div className="mt-6 rounded-2xl bg-slate-100 h-52 flex items-center justify-center border border-slate-200">
-              <div className="text-center text-slate-400">
-                <MapPin size={32} className="mx-auto mb-2 text-gold-400" />
-                <p className="text-sm font-medium">Île-de-France</p>
-                <p className="text-xs">Intervention dans un rayon de 80 km</p>
-              </div>
+            <div className="mt-6 rounded-2xl overflow-hidden border border-slate-200 h-52">
+              <iframe
+                title="Localisation Fermetures Djem"
+                src="https://www.google.com/maps?q=8+avenue+Maurice+Benhamou+93140+Bondy+France&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
 
