@@ -38,13 +38,13 @@ export default function Footer() {
                 protection et motorisation depuis 2008.
               </p>
               <div className="space-y-2 text-sm">
-                <a href="tel:+33123456789" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
+                <a href="tel:+33141557046" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
                   <Phone size={14} className="text-gold-500" />
-                  01 23 45 67 89
+                  01 41 55 70 46
                 </a>
-                <a href="mailto:contact@fermetures-djem.fr" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
+                <a href="mailto:contact@fermeturesdjem.com" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
                   <Mail size={14} className="text-gold-500" />
-                  contact@fermetures-djem.fr
+                  contact@fermeturesdjem.com
                 </a>
                 <div className="flex items-center gap-2 text-slate-400">
                   <MapPin size={14} className="text-gold-500 shrink-0" />
