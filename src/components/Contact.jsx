@@ -10,8 +10,8 @@ const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
 const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 const infos = [
-  { icon: Phone,  label: 'Téléphone',            value: '01 23 45 67 89',                href: 'tel:+33123456789' },
-  { icon: Mail,   label: 'Email',                 value: 'contact@fermetures-djem.fr',     href: 'mailto:contact@fermetures-djem.fr' },
+  { icon: Phone,  label: 'Téléphone',            value: '01 41 55 70 46',                href: 'tel:+33141557046' },
+  { icon: Mail,   label: 'Email',                 value: 'contact@fermeturesdjem.com',     href: 'mailto:contact@fermeturesdjem.com' },
   { icon: MapPin, label: "Zone d'intervention",   value: 'Île-de-France & grande couronne', href: null },
   { icon: Clock,  label: 'Horaires',              value: 'Lun–Sam : 8h–19h · Urgences 7j/7', href: null },
 ]
