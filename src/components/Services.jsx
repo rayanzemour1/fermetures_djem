@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Blinds, Store, AppWindow, DoorOpen, Fence, Tent, Zap, Wrench } from 'lucide-react'
+import { Blinds, Store, AppWindow, DoorOpen, Fence, Warehouse, Zap, Wrench } from 'lucide-react'
 
 const services = [
   {
@@ -12,7 +12,7 @@ const services = [
   {
     icon: Store,
     title: 'Rideaux Métalliques',
-    desc: 'Rideaux métalliques pour commerces, entrepôts et garages. Modèles battants, coulissants ou enroulables, ignifugés sur demande.',
+    desc: 'Rideaux métalliques pour commerces, entrepôts et garages. Modèles coulissants ou enroulables, ignifugés sur demande.',
     tags: ['Commerce', 'Entrepôt', 'Anti-effraction', 'Ignifugé'],
     color: 'from-slate-500 to-slate-700',
   },
@@ -38,10 +38,10 @@ const services = [
     color: 'from-emerald-500 to-emerald-700',
   },
   {
-    icon: Tent,
-    title: 'Vérandas & Pergolas',
-    desc: 'Vérandas aluminium clés en main, pergolas bioclimatiques à lames orientables. Extension lumineuse de votre espace de vie.',
-    tags: ['Bioclimatique', 'Aluminium', 'Lames orientables', 'Sur mesure'],
+    icon: Warehouse,
+    title: 'Fermetures Industrielles',
+    desc: 'Barrières levantes, portails et portes à usage intensif pour sites industriels et commerciaux. Portes vitrées automatiques coulissantes pour accès commerces.',
+    tags: ['Barrière levante', 'Usage intensif', 'Porte vitrée', 'Automatique'],
     color: 'from-rose-500 to-rose-700',
   },
   {
@@ -54,7 +54,7 @@ const services = [
   {
     icon: Wrench,
     title: 'Dépannage & SAV',
-    desc: 'Intervention rapide 7j/7 pour tous vos dépannages. Remplacement de lames, moteurs, ressorts et systèmes de verrouillage.',
+    desc: 'Intervention rapide pour tous vos dépannages. Remplacement de lames, moteurs, ressorts et systèmes de verrouillage.',
     tags: ['7j/7', 'Urgence', 'Toutes marques', 'Garantie'],
     color: 'from-orange-500 to-orange-700',
   },
