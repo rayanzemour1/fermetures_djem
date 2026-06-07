@@ -1,37 +1,37 @@
 import { useEffect, useRef, useState } from 'react'
-import { Blinds, Store, AppWindow, DoorOpen, Fence, Warehouse, Zap, Wrench } from 'lucide-react'
+import { Layers, Warehouse, Monitor, DoorClosed, Grid3x3, Zap, Wrench } from 'lucide-react'
 
 const services = [
   {
-    icon: Blinds,
+    icon: Layers,
     title: 'Volets Roulants',
     desc: 'Installation, réparation et motorisation de volets roulants aluminium, PVC ou bois. Manuels ou électriques, adaptés à toutes les fenêtres.',
     tags: ['Aluminium', 'PVC', 'Motorisé', 'Sur mesure'],
     color: 'from-blue-500 to-blue-700',
   },
   {
-    icon: Store,
+    icon: Warehouse,
     title: 'Rideaux Métalliques',
     desc: 'Rideaux métalliques pour commerces, entrepôts et garages. Modèles coulissants ou enroulables, ignifugés sur demande.',
     tags: ['Commerce', 'Entrepôt', 'Anti-effraction', 'Ignifugé'],
     color: 'from-slate-500 to-slate-700',
   },
   {
-    icon: AppWindow,
+    icon: Monitor,
     title: 'Fenêtres & Baies',
     desc: 'Menuiseries PVC, aluminium ou bois double/triple vitrage. Amélioration thermique et acoustique pour un confort optimal.',
     tags: ['Double vitrage', 'Triple vitrage', 'Isolation', 'PVC / Alu'],
     color: 'from-sky-500 to-sky-700',
   },
   {
-    icon: DoorOpen,
+    icon: DoorClosed,
     title: 'Portails & Portes',
     desc: 'Portails battants ou coulissants, portes de garage sectionnelles ou basculantes. Automation complète avec télécommande ou smartphone.',
     tags: ['Battant', 'Coulissant', 'Sectionnelle', 'Automatique'],
     color: 'from-amber-500 to-amber-700',
   },
   {
-    icon: Fence,
+    icon: Grid3x3,
     title: 'Garde-Corps',
     desc: 'Garde-corps en aluminium, acier inoxydable ou verre pour balcons, terrasses et escaliers. Design contemporain et sécurité maximale.',
     tags: ['Inox', 'Verre', 'Balcon', 'Terrasse'],
